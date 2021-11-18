@@ -10,6 +10,18 @@ class HashTable {
     }
     return hash;
   }
+
+  set(key, value) {
+    let index = this._hash(key);
+    this.data[index] = [key, value];
+    return this.data[index];
+  }
+
+  get(key) {
+    let index = this._hash(key);
+    console.log(this.data[index][1]);
+    return this.data[index][1];
+  }
 }
 
 const myHashTable = new HashTable(50);
