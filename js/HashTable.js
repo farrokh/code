@@ -13,14 +13,39 @@ class HashTable {
 
   set(key, value) {
     let index = this._hash(key);
+    if (!this.data[index]) {
+      this.data[index] = [];
+    }
     this.data[index] = [key, value];
     return this.data[index];
   }
 
   get(key) {
     let index = this._hash(key);
-    console.log(this.data[index][1]);
-    return this.data[index][1];
+    if (this.data[index]) {
+      for (let i = 0; i < this.data[index].length; i++) {
+        if (this.data[index][i][0] === key) {
+          return this.data[index][i][1];
+        }
+      }
+      // or using map to return the value
+      // this.data[index].map((item) => {
+      //   if (item[0] === key) {
+      //     return item[1];
+      //   }
+      // }
+      // );
+    }
+    return undefined;
+  }
+
+  keys() {
+    for (let index = 0; index < this.data.length; index++) {
+      const element = this.data[index];
+      for (let j = 0; j < element.length; j++) {
+        return element[j][0];
+      }
+    }
   }
 }
 
