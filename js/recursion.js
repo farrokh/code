@@ -49,14 +49,35 @@ function fibonacciIterative(n) {
 // const fib = fibonacciIterative(6);
 
 function fibonacciRecursive(n) {
-  if (n < 0) {
-    return 0;
-  }
-  if (n === 1) {
-    return 1;
+  //   if (n < 0) {
+  //     return 0;
+  //   }
+  //   if (n === 1) {
+  //     return 1;
+  //   }
+  if (n < 2) {
+    return n;
   }
   return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
 
-const fib = fibonacciRecursive(6);
-console.log(fib);
+let counter = 0;
+let counterd = 0;
+function fibonacciDynamic() {
+  let hash = { 0: 0, 1: 1, 2: 1 };
+  return function recFibonacci(n) {
+    counterd++;
+    if (n in hash) {
+      return hash[n];
+    } else {
+      counter++;
+      hash[n] = recFibonacci(n - 1) + recFibonacci(n - 2);
+      return hash[n];
+    }
+  };
+}
+// const fib = fibonacciRecursive(20);
+const fib = fibonacciDynamic();
+console.log(fib(112));
+console.log("counter ", counter);
+console.log("counterd ", counterd);
