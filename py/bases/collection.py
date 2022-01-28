@@ -32,6 +32,9 @@ d = deque()
 d.append(1)
 d.append(2)
 d.append(3)
+# first item
+
+
 print(d) # this will print deque([1, 2, 3])
 d.popleft()
 print(d) # this will print deque([2, 3])
