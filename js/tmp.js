@@ -1,1 +1,2 @@
-console.log(7 < null);
+const num = 7;
+console.log(`( ${num} )`)

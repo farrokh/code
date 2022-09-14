@@ -11,6 +11,7 @@
 # Output: false
 
 # my solution (easier and faster):
+from collections import defaultdict
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         if len(nums) - len(set(nums))>0 :
@@ -27,4 +28,16 @@ class Solution:
                 hashedList[num] = i
             else:
                 return True
+        return False
+
+
+# default dic sotulion:
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        m = defaultdict(int)
+
+        for num in nums:
+            if m[num]:
+                return True
+            m[num] += 1
         return False
